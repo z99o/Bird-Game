@@ -205,7 +205,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stretchSpeed: 1
-  stretchDistance: 5
+  stretchMin: 0.2
+  stretchMax: 1
+  rotateMax: -0.083
+  rotateMin: 0.35
+  rotateSpeed: 50
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
