@@ -30,7 +30,7 @@ public class arm_movement : MonoBehaviour
             //float moveVertical = Input.GetAxis("Vertical");
             Vector2 scale = transform.localScale;
            if (Input.GetKey("left") && transform.localScale.x < stretchMax){
-                scale.x += (stretchSpeed * Time.deltaTime)/(stretchSlowdown*transform.localScale.x);
+                scale.x += (stretchSpeed * Time.deltaTime)*Math.Abs((float)Math.Log(stretchSlowdown*transform.localScale.x));
                 Debug.Log("left held down,");
                 transform.localScale = scale;
            }
