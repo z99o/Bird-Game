@@ -204,6 +204,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e5db0a9917f6fb4b94a6a8dd785668c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stretchSlowdown: 4
+  stretchSnapback: 5
   stretchSpeed: 1
   stretchMin: 0.2
   stretchMax: 1

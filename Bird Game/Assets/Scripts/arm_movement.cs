@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,6 +8,8 @@ public class arm_movement : MonoBehaviour
     protected Transform T;
     protected virtual void Awake() { T = transform; } //caches original transform, this might be useful later.
     // Start is called before the first frame update
+    public float stretchSlowdown = 1;
+    public float stretchSnapback = 1;
     public float stretchSpeed = -0.001f;
     public float stretchMin = 0.2f;
     public float stretchMax = 1;
@@ -27,12 +30,12 @@ public class arm_movement : MonoBehaviour
             //float moveVertical = Input.GetAxis("Vertical");
             Vector2 scale = transform.localScale;
            if (Input.GetKey("left") && transform.localScale.x < stretchMax){
-                scale.x += stretchSpeed * Time.deltaTime;
+                scale.x += (stretchSpeed * Time.deltaTime)/(stretchSlowdown*transform.localScale.x);
                 Debug.Log("left held down,");
                 transform.localScale = scale;
            }
            if (Input.GetKey("right") && transform.localScale.x > stretchMin){
-                scale.x += (-stretchSpeed) * Time.deltaTime;
+                scale.x += (-stretchSpeed * Time.deltaTime)*Math.Abs(((float)Math.Log(transform.localScale.x*stretchSnapback)));
                 Debug.Log("right held down,");
                 transform.localScale = scale;
         }
