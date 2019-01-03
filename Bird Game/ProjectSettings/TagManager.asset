@@ -3,7 +3,9 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - rightArm
+  - leftArm
   layers:
   - Default
   - TransparentFX
@@ -38,12 +40,21 @@ TagManager:
   - 
   - 
   m_SortingLayers:
-  - name: Entities
-    uniqueID: 180182571
+  - name: Default
+    uniqueID: 0
     locked: 0
   - name: Background
     uniqueID: 1424658895
     locked: 0
-  - name: Default
-    uniqueID: 0
+  - name: playerRight
+    uniqueID: 2520687583
+    locked: 0
+  - name: Player
+    uniqueID: 4125855127
+    locked: 0
+  - name: Entities
+    uniqueID: 180182571
+    locked: 0
+  - name: playerLeft
+    uniqueID: 2693038379
     locked: 0
