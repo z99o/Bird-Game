@@ -6,6 +6,11 @@ TagManager:
   tags:
   - rightArm
   - leftArm
+  - hand
+  - leftHand
+  - rightHand
+  - armsCenter
+  - bird
   layers:
   - Default
   - TransparentFX

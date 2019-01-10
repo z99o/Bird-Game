@@ -44,25 +44,25 @@ public class arm_movement : MonoBehaviour
             Vector2 scale = transform.localScale;
            if (Input.GetKey(extend) && transform.localScale.x < stretchMax){
                 scale.x += (stretchSpeed * Time.deltaTime)*Math.Abs((float)Math.Log(stretchSlowdown*transform.localScale.x));
-                Debug.Log("left held down,");
+                //Debug.Log("left held down,");
                 transform.localScale = scale;
            }
            if (Input.GetKey(retract) && transform.localScale.x > stretchMin){
                 scale.x += (-stretchSpeed * Time.deltaTime)*Math.Abs(((float)Math.Log(transform.localScale.x*stretchSnapback)));
-                Debug.Log("right held down,");
+                //Debug.Log("right held down,");
                 transform.localScale = scale;
         }
     }
     void armRotate() {
-        Debug.Log("transform.localRotation.z " + transform.localRotation.z);
+        //Debug.Log("transform.localRotation.z " + transform.localRotation.z);
         if (Input.GetKey(up) && transform.localRotation.z <= rotateMin) {
             transform.Rotate(0, 0, -Time.deltaTime * rotateSpeed);
-            Debug.Log("up held down");
+            //Debug.Log("up held down");
         }
         if (Input.GetKey(down) && transform.localRotation.z >= rotateMax)
         {
             transform.Rotate(0,0,Time.deltaTime*rotateSpeed);
-            Debug.Log("down held down,");
+            //Debug.Log("down held down,");
         }
     }
 }
