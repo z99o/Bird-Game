@@ -143,7 +143,7 @@ Transform:
   m_Children:
   - {fileID: 195798626}
   m_Father: {fileID: 115242343}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &75079113
 SpriteRenderer:
@@ -240,10 +240,10 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 75079112}
   - {fileID: 865532380}
-  - {fileID: 1397627841}
+  - {fileID: 75079112}
   - {fileID: 373572916}
+  - {fileID: 1397627841}
   m_Father: {fileID: 1204117546}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -394,7 +394,7 @@ Transform:
   m_LocalScale: {x: 0.02, y: 0.1, z: 1}
   m_Children: []
   m_Father: {fileID: 115242343}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &373572917
 SpriteRenderer:
@@ -959,7 +959,7 @@ Transform:
   m_LocalScale: {x: 0.67155606, y: 0.86647207, z: 1}
   m_Children: []
   m_Father: {fileID: 115242343}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &945373060
 GameObject:
@@ -976,7 +976,7 @@ GameObject:
   - component: {fileID: 945373065}
   m_Layer: 0
   m_Name: birdBody
-  m_TagString: Untagged
+  m_TagString: bird
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1214,7 +1214,7 @@ Transform:
   m_Children:
   - {fileID: 538595403}
   m_Father: {fileID: 115242343}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1397627842
 MonoBehaviour:
