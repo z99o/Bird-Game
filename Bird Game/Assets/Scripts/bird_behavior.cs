@@ -10,16 +10,21 @@ public class bird_behavior : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //set arm flags to false
         birdInLeftHand = false;
         birdInRightHand = false;
+        //find the object armcenter
         retreiveTo = GameObject.Find("armCenter");
     }
 
     // Update is called once per frame
     void Update()
     {
-        //every frame 
-        birdRetrieve();
+          //every frame check if 
+          if (birdInLeftHand == true && birdInRightHand == true)
+          {
+               birdRetrieve();
+          }
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -32,7 +37,7 @@ public class bird_behavior : MonoBehaviour
         if (other.tag == "rightHand")
         {
             Debug.Log("right hand enter bird");
-            birdInLeftHand = true;
+            birdInRightHand = true;
         }
     }
     private void OnTriggerExit2D(Collider2D other)
@@ -45,23 +50,18 @@ public class bird_behavior : MonoBehaviour
         if (other.tag == "rightHand")
         {
             Debug.Log("right hand exit bird");
-            birdInLeftHand = false;
+            birdInRightHand = false;
         }
     }
     void birdRetrieve()
     {
         //detect if both hands are touching
-        if(birdInLeftHand && birdInRightHand)
-        {
             Debug.Log("bird is traveling to player");
             float step = speed * Time.deltaTime;
 
             // move sprite towards the target location
             transform.position = Vector2.MoveTowards(transform.position, retreiveTo.transform.position, step);
             //if true make the birds parent the hand
-
-        }
-
 
     }
 }
