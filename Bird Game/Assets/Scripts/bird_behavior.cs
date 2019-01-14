@@ -21,10 +21,8 @@ public class bird_behavior : MonoBehaviour
     void Update()
     {
           //every frame check if 
-          if (birdInLeftHand == true && birdInRightHand == true)
-          {
                birdRetrieve();
-          }
+       
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -55,13 +53,15 @@ public class bird_behavior : MonoBehaviour
     }
     void birdRetrieve()
     {
-        //detect if both hands are touching
-            Debug.Log("bird is traveling to player");
-            float step = speed * Time.deltaTime;
+     //detect if both hands are touching
+     if (birdInLeftHand == true && birdInRightHand == true)
+     {
+          Debug.Log("bird is traveling to player");
+          float step = speed * Time.deltaTime;
 
-            // move sprite towards the target location
-            transform.position = Vector2.MoveTowards(transform.position, retreiveTo.transform.position, step);
-            //if true make the birds parent the hand
-
+          // move sprite towards the target location
+          transform.position = Vector2.MoveTowards(transform.position, retreiveTo.transform.position, step);
+          //if true make the birds parent the hand
+     }
     }
 }
