@@ -7,7 +7,7 @@ public class arm_movement : MonoBehaviour
 {
     protected Transform T;
     protected virtual void Awake() { T = transform; } //caches original transform, this might be useful later.
-     private GameObject grabbedBird;
+    private GameObject grabbedBird;
     // Start is called before the first frame update
     public float stretchSlowdown = 1;
     public float stretchSnapback = 1;
@@ -19,6 +19,7 @@ public class arm_movement : MonoBehaviour
     public float rotateSpeed = 10;
     private string extend, retract, up, down;
     public bool isGrabbingBird;
+    public bool birdInHand;
     void Start() {
           //detect arm side and configure controls for arm
         if(this.tag == "rightArm"){
@@ -35,37 +36,49 @@ public class arm_movement : MonoBehaviour
           }
           //This line fixes an issue where the arm will be able to rotate past it's boundary
           transform.Rotate(0, 0, 360);
-        isGrabbingBird = false;
+          isGrabbingBird = false;
+          birdInHand = false;
     }
     // Update is called once per frame
     void Update(){
-        armStretch();
-        armRotate();
-        armCaught();  
-    }
-     private void OnTriggerEnter2D(Collider2D other)
-     {
-          Debug.Log("Trigger entered bird");
-          if (other.tag == "leftHand")
-          {
-               Debug.Log("hand grabbed bird");
-               isGrabbingBird = true;
+          grabCheck();
+          if (isGrabbingBird)
+               bringBirdBack();
+          else{
+               armStretch();
+               armRotate();
           }
-     }
-     private void OnTriggerExit2D(Collider2D other)
+    }
+
+     void OnTriggerEnter2D(Collider2D other)
      {
           if (other.tag == "bird")
           {
+               Debug.Log("Bird in Hand");
+               birdInHand = true;  //CHECK THIS FLAG WHENEVER USING "grabbedBird" otherwise you will error because grabbedBird will have nothing
+               grabbedBird = other.gameObject;
+          }
+     }
+
+     void OnTriggerExit2D(Collider2D other){
+          if (other.tag == "bird"){
                Debug.Log("hand lost bird");
                isGrabbingBird = false;
           }
      }
-     void armCaught(){
-          if (isGrabbingBird){
-               //check if oppositeArm also isGrabbingBird
-               Debug.Log("both arms grabbing bird");    
+
+    void grabCheck() {
+          //checks if the bird is in the object with the birdInHand bool, and checks if it is currently moving towards the player
+          if (birdInHand && grabbedBird.GetComponent<bird_behavior>().retreiving){
+               isGrabbingBird = true;
+               Debug.Log("both arms grabbing bird");
           }
-    }
+          else
+          {
+               isGrabbingBird = false;
+          }
+     }
+
     void armStretch(){
             //arm can not have an x scale smaller than stretchmin, and cannot be greater than stretchmax
             //float moveHorizontal = Input.GetAxis("Horizontal");
@@ -82,16 +95,24 @@ public class arm_movement : MonoBehaviour
                 transform.localScale = scale;
         }
     }
+
     void armRotate() {
         //Debug.Log("transform.localRotation.z " + transform.localRotation.z);
         if (Input.GetKey(up) && transform.localRotation.z <= rotateMin) {
             transform.Rotate(0, 0, -Time.deltaTime * rotateSpeed);
-            //Debug.Log("up held down");
         }
         if (Input.GetKey(down) && transform.localRotation.z >= rotateMax)
         {
             transform.Rotate(0,0,Time.deltaTime*rotateSpeed);
-            //Debug.Log("down held down,");
         }
     }
+
+    void bringBirdBack(){
+          Vector2 scale = transform.localScale;
+          if (isGrabbingBird && transform.localScale.x > stretchMin)
+          {
+               scale.x += (-stretchSpeed * Time.deltaTime) * Math.Abs(((float)Math.Log(transform.localScale.x * stretchSnapback)));
+               transform.localScale = scale;
+          }
+     }
 }
