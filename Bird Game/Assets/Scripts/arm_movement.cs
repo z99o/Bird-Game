@@ -63,13 +63,19 @@ public class arm_movement : MonoBehaviour
      void OnTriggerExit2D(Collider2D other){
           if (other.tag == "bird"){
                Debug.Log("hand lost bird");
-               isGrabbingBird = false;
+               birdInHand = false;
+               //isGrabbingBird = false;
           }
      }
 
     void grabCheck() {
           //checks if the bird is in the object with the birdInHand bool, and checks if it is currently moving towards the player
-          if (birdInHand && grabbedBird.GetComponent<bird_behavior>().retreiving){
+          if(grabbedBird == null){ //if the bird had been destroyed or lost somehow dont crash the game by accessing null
+               isGrabbingBird = false;
+          }
+
+          else if (birdInHand && grabbedBird.GetComponent<bird_behavior>().birdInLeftHand && grabbedBird.GetComponent<bird_behavior>().birdInLeftHand)
+          {
                isGrabbingBird = true;
                Debug.Log("both arms grabbing bird");
           }
@@ -113,6 +119,8 @@ public class arm_movement : MonoBehaviour
           {
                scale.x += (-stretchSpeed * Time.deltaTime) * Math.Abs(((float)Math.Log(transform.localScale.x * stretchSnapback)));
                transform.localScale = scale;
+          }
+          else{
           }
      }
 }
