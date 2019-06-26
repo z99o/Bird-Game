@@ -11,6 +11,7 @@ TagManager:
   - rightHand
   - armsCenter
   - bird
+  - roost
   layers:
   - Default
   - TransparentFX

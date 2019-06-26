@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class player_controller : MonoBehaviour
+public class bird_captureer : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
