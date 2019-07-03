@@ -6,6 +6,7 @@ using UnityEngine;
 public class bird_behavior : MonoBehaviour
 {
     public bool birdInLeftHand, birdInRightHand;
+    public Animator animator;
     public bool retreiving;
     private GameObject retreiveTo;
     public float speed = 1.0f;
@@ -19,6 +20,7 @@ public class bird_behavior : MonoBehaviour
     void Start()
     {
         //set arm flags to false
+        animator.SetBool("isFlying", true);
         birdInLeftHand = false;
         birdInRightHand = false;
         //find the object armcenter
@@ -31,8 +33,8 @@ public class bird_behavior : MonoBehaviour
     void Update()
     {
           //every frame check if 
-          birdRetrieve();
-          birdFly();
+        birdRetrieve();
+        birdFly();
        
     }
     void birdFly(){
@@ -44,6 +46,7 @@ public class bird_behavior : MonoBehaviour
                     getRoost();
                     roostTime = 5.0f;            
                     isRoosting = true;
+                    animator.SetBool("isFlying", false);
                 }
         }
         
@@ -92,6 +95,7 @@ public class bird_behavior : MonoBehaviour
         }
         if(other.tag == "roost"){
             isRoosting = false;
+            animator.SetBool("isFlying", true);
             Debug.Log("bird left roost");
         }
     }

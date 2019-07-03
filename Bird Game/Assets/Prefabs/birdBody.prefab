@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6796678176688074896}
   - component: {fileID: 6796678176688074897}
   - component: {fileID: 7984260008595809946}
+  - component: {fileID: 4861994749046105907}
   m_Layer: 0
   m_Name: birdBody
   m_TagString: bird
@@ -28,8 +29,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6796678176688074908}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -5.2, y: 3.34, z: 0}
-  m_LocalScale: {x: 0.343, y: 0.403, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.8614788, y: 0.852345, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -71,7 +72,7 @@ SpriteRenderer:
   m_SortingLayerID: 180182571
   m_SortingLayer: 4
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: e5e039b56d6819a4cba418b8eead7e82, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 50052adcafa3d584db90cd82eb4d8a03, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -96,6 +97,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   birdInLeftHand: 0
   birdInRightHand: 0
+  animator: {fileID: 4861994749046105907}
   retreiving: 0
   speed: 10
   roostTime: 5
@@ -141,12 +143,31 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.8, y: 1.46}
+    oldSize: {x: 1, y: 1}
     newSize: {x: 1.8, y: 1.46}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.8, y: 1.46}
+  m_Size: {x: 0.8, y: 0.81}
   m_EdgeRadius: 0
+--- !u!95 &4861994749046105907
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6796678176688074908}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 539055aef7fa8ea47b09746d0c8b1e92, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

@@ -17,7 +17,7 @@ public class bird_generator : MonoBehaviour
     {
         timer -= Time.deltaTime;
         if(timer <= 0){
-            Instantiate(bird);
+            Instantiate(bird,transform);
             timer = 10;
         }
 
